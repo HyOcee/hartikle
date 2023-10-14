@@ -1,0 +1,19 @@
+.banner_img {
+  @apply relative aspect-[1/0.9];
+
+  img {
+    @apply w-[45%] object-cover absolute aspect-[9/12] rounded-md;
+  }
+
+  img:nth-child(1) {
+    @apply left-0;
+  }
+
+  img:nth-child(2) {
+    @apply right-0 top-[10%];
+  }
+
+  img:nth-child(3) {
+    @apply left-[50%] -translate-x-[50%] top-[20%];
+  }
+}

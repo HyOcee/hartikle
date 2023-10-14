@@ -1,0 +1,85 @@
+<section class="bg-slate-100 web_padding_l web_padding_r py-10">
+  <h2 class="font-bold text-3xl">Popular Article</h2>
+
+  <div class="sm:flex items-center bg-white mt-5">
+    <img
+      src="https://loremflickr.com/g/320/240/paris"
+      class="w-full h-full object-cover"
+      alt=""
+    />
+    <div class="p-3 md:p-4 rounded-md">
+      <p class="text-xs text-gray-600">5 years ago</p>
+      <h4 class="font-bold mt-3 text-base">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi?
+      </h4>
+      <p class="text-sm mt-3 text-gray-600">
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores cumque
+        enim impedit, architecto animi molestiae repellat harum beatae minima
+        culpa ipsa?
+      </p>
+
+      <div class="flex gap-2 mt-4 items-center">
+        <img src="assets/face-outline.png" class="w-5 h-5" alt="" />
+        <div>
+          <p class="font-bold text-sm leading-4">Sam Kir</p>
+          <p class="text-xs leading-3 text-gray-600">Content writer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-6 flex justify-between items-center">
+    <h2 class="font-bold text-3xl">Articles</h2>
+
+    <button
+      class="rounded-md p-3 text-sm font-bold border-slate-600 border-solid border text-slate-600"
+      [class.isactive]="showBookmarked"
+      (click)="showBookmarked ? showAll() : showBookmarkedArticles()"
+    >
+      {{ !showBookmarked ? "Show Bookmarked" : "Show All" }}
+    </button>
+  </div>
+
+  <div
+    class="grid gap-5 sm:[grid-template-columns:repeat(auto-fill,minmax(265px,1fr))] mt-6"
+  >
+    <ng-container *ngIf="!showBookmarked">
+      <app-card
+        *ngFor="let item of articles$ | async"
+        [article]="item"
+      ></app-card>
+    </ng-container>
+
+    <ng-container *ngIf="showBookmarked">
+      <app-card
+        *ngFor="let item of bookmarkedArticles$ | async"
+        [article]="item"
+      ></app-card>
+    </ng-container>
+
+    <div
+      class="h-full bg-gray-200 rounded-md flex items-center justify-center p-6 hover:bg-gray-300 load-more"
+      (click)="loadMore()"
+      *ngIf="
+        (articles$ | async)?.length && !(loading$ | async) && !showBookmarked
+      "
+    >
+      <img src="assets/plus.png" class="w-[40%]" alt="" />
+    </div>
+  </div>
+
+  <div class="">
+    <img
+      src="assets/loading.gif"
+      *ngIf="loading$ | async"
+      class="block mx-auto"
+      alt=""
+    />
+
+    <div
+      class="border border-dashed p-20 text-center font-medium text-lg text-gray-800 rounded-lg"
+    >
+      Your bookmarks is empty
+    </div>
+  </div>
+</section>

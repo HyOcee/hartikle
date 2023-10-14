@@ -1,0 +1,17 @@
+.text-p {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  height: 66px;
+}
+
+.text-h {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  height: 36px;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

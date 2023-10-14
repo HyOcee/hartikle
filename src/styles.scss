@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.web_padding_l {
+  @apply pl-5 md:pl-10 xl:pl-[5vw];
+}
+.web_padding_r {
+  @apply pr-5 md:pr-10 xl:pr-[5vw];
+}

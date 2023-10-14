@@ -1,0 +1,29 @@
+.bottom-nav {
+  img {
+    width: 32px;
+  }
+}
+
+.article-icons {
+  img {
+    width: 28px;
+  }
+}
+
+.load-more {
+  @apply transition-all duration-500 active:scale-95 cursor-pointer;
+
+  img {
+    @apply transition-all duration-500;
+  }
+}
+
+.load-more:hover {
+  img {
+    @apply scale-105;
+  }
+}
+
+button.isactive {
+  @apply bg-green-600 border-none text-white;
+}

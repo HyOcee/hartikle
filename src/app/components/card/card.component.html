@@ -1,0 +1,56 @@
+<div>
+  <img
+    [src]="'https://loremflickr.com/320/400'"
+    class="aspect-video w-full object-cover rounded-t-md"
+    alt=""
+  />
+
+  <div class="bg-white p-3 rounded-b-md">
+    <p class="text-xs font-medium text-gray-600">
+      {{ article.publishedAt | date }}
+    </p>
+    <h5 class="mt-3 font-bold leading-[18px] text-h">
+      {{ article.title }}
+    </h5>
+    <p class="mt-3 text-sm leading-4 text-gray-600 text-justify text-p">
+      {{ article.title }}
+    </p>
+
+    <div
+      class="grid grid-cols-[auto_1fr_auto_auto] justify-between items-center mt-4 gap-2"
+    >
+      <img src="assets/face-outline.png" class="w-5 h-5" alt="" />
+      <div class="w-full overflow-hidden">
+        <p
+          class="w-full font-bold text-sm leading-4 overflow-hidden whitespace-nowrap text-ellipsis"
+        >
+          {{ article.author }}
+        </p>
+        <p class="text-xs leading-3 text-gray-600">
+          {{ article.source.name }}
+        </p>
+      </div>
+
+      <button>
+        <img class="w-5" src="assets/comment.png" alt="" />
+      </button>
+      <button
+        (click)="bookmarkArticle()"
+        class="w-8 h-8 flex justify-center items-center rounded-full hover:bg-gray-100 active:scale-95"
+      >
+        <img
+          *ngIf="article.isBookmarked"
+          class="w-5"
+          src="assets/filled-star.png"
+          alt=""
+        />
+        <img
+          *ngIf="!article.isBookmarked"
+          class="w-5"
+          src="assets/star.png"
+          alt=""
+        />
+      </button>
+    </div>
+  </div>
+</div>
